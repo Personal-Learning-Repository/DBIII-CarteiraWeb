@@ -97,7 +97,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>bagre</finalName>
+		<finalName>carteiraweb</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
