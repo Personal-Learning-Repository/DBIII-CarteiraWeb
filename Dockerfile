@@ -1,11 +1,4 @@
 FROM tomcat:10.1.15-jre21-temurin
-FROM maven:3.9.1 as build
-
-WORKDIR ./
-
-COPY pom.xml .
-
-RUN mvn clean package
 
 COPY target/*.war /usr/local/tomcat/webapps
 

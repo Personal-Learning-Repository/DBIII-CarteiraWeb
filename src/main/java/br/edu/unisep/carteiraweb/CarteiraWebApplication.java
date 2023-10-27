@@ -11,6 +11,7 @@ public class CarteiraWebApplication {
 
 	//TODO Dockerizar
 	//TODO Paging nos controllers
+	//TODO Webflux
 
 	public static void main(String[] args) {
 		Security.addProvider(new BouncyCastleProvider());
