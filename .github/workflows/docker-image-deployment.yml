@@ -24,7 +24,7 @@ jobs:
       spring.datasource.username: ${{ vars.SPRING_DATASOURCE_USERNAME }}
       spring.datasource.password: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
       jwt.secret: ${{ secrets.JWT_SECRET }}
-      spring.jpa.hibernate.ddl-auto: ${{ var.HIBERNATE_DDL }} 
+      spring.jpa.hibernate.ddl-auto: ${{ vars.HIBERNATE_DDL }} 
 
     steps:
       - name: Checkout code
