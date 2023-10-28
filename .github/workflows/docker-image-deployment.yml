@@ -60,7 +60,7 @@ jobs:
     steps:
       - name: Build and push Docker image
         run: |
-          docker build -t carteira-web:latest -f /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb/carteira-web/Dockerfile .
+          docker build -t carteira-web:latest -f /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb/Dockerfile .
           docker tag carteira-web:latest gmod9k/carteira-web:latest
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push gmod9k/carteira-web:latest
