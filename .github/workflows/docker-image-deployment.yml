@@ -40,8 +40,16 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
 
+      - name: Pwd before Build
+        run: |
+          pwd
+
       - name: Build with Maven
         run: mvn clean package
+
+      - name: Pwd after Build
+        run: |
+          pwd
 
   deploy:
     needs: build
