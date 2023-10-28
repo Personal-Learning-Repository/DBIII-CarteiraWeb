@@ -64,6 +64,7 @@ jobs:
           ls
     
       - name: Build and push Docker image
+        working-directory: /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb
         run: |
           docker build -t carteira-web:latest .
           docker tag carteira-web:latest gmod9k/carteira-web:latest
