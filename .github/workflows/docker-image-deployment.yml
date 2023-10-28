@@ -43,6 +43,7 @@ jobs:
       - name: Pwd before Build
         run: |
           pwd
+          ls
 
       - name: Build with Maven
         run: mvn clean package
@@ -50,6 +51,7 @@ jobs:
       - name: Pwd after Build
         run: |
           pwd
+          ls
 
   deploy:
     needs: build
