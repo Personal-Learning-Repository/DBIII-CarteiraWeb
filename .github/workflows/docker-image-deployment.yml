@@ -14,20 +14,20 @@ jobs:
       db:
         image: mysql:5.7
         env:
-          MYSQL_USER: ${{ vars.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-          MYSQL_DATABASE: ${{ vars.MYSQL_DATABASE }}
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_USER: ides
+          MYSQL_PASSWORD: ides
+          MYSQL_DATABASE: pg3_carteira
+          MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
 
     env:
-      spring.datasource.url: ${{ vars.SPRING_DATASOURCE_URL }}
-      spring.datasource.username: ${{ vars.SPRING_DATASOURCE_USERNAME }}
-      spring.datasource.password: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+      spring.datasource.url: jdbc:mysql://db:3306/pg3_carteira?useTimezone=true&serverTimezone=UTC
+      spring.datasource.username: ides
+      spring.datasource.password: ides
       spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
-      spring.jpa.hibernate.ddl-auto: ${{ vars.HIBERNATE_DDL }} 
-      jwt.secret: ${{ secrets.JWT_SECRET }}
+      spring.jpa.hibernate.ddl-auto: update 
+      jwt.secret: progdbiii2023
       spring.main.allow-circular-references: true
 
     steps:
