@@ -58,6 +58,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Pwd Deploy
+        run: |
+          pwd
+          ls
+    
       - name: Build and push Docker image
         run: |
           docker build -t carteira-web:latest -f /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb/ .
