@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     services:
@@ -53,12 +53,6 @@ jobs:
           pwd
           ls
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: ProgDBIII-CarteiraWeb-ENV
-
-    steps:  
       - name: Docker Login
         uses: docker/login-action@v3
         with:
@@ -75,4 +69,4 @@ jobs:
         with:
           push: true
           tags: gmod9k/carteira-web:latest
-
+          
