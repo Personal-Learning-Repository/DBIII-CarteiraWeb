@@ -9,6 +9,7 @@ jobs:
 
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: ProgDBIII-CarteiraWeb-ENV
 
     services:
       db:
