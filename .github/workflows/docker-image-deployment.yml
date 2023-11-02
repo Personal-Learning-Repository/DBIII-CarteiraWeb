@@ -32,8 +32,8 @@ jobs:
       spring.main.allow-circular-references: true
 
     steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
@@ -69,5 +69,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
+          context: target
           tags: gmod9k/carteira-web:latest
           
