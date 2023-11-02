@@ -15,10 +15,10 @@ jobs:
       db:
         image: mysql:5.7
         env:
-          MYSQL_USER: ides
-          MYSQL_PASSWORD: ides
-          MYSQL_DATABASE: pg3_carteira
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: ${{ vars.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ vars.MYSQL_DATABASE }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
         ports:
           - 3306:3306
 
