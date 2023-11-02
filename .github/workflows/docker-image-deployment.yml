@@ -71,7 +71,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          context: DBIII-CarteiraWeb
-          file: DBIII-CarteiraWeb/Dockerfile
+          context: /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb
+          file: Dockerfile
           tags: gmod9k/carteira-web:latest
           
