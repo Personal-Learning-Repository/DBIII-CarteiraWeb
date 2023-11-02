@@ -64,11 +64,14 @@ jobs:
         run: |
           pwd
           ls
+          cd target
+          ls
           
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           push: true
-          context: target
+          context: DBIII-CarteiraWeb
+          file: DBIII-CarteiraWeb/Dockerfile
           tags: gmod9k/carteira-web:latest
           
