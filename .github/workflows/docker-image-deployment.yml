@@ -55,4 +55,25 @@ jobs:
           context: /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb
           file: Dockerfile
           tags: gmod9k/carteira-web:latest
+
+      - uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "."
+          target: "~/app/integrations"
+
+      - name: Build on SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/app/integrations
+            mvn clean package
+            docker-compose up -d --build
           
