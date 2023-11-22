@@ -1,13 +1,13 @@
 package br.edu.unisep.carteiraweb.controller;
 
-import br.edu.unisep.carteiraweb.builder.UsuarioDTOBuilder;
-import br.edu.unisep.carteiraweb.dto.DisplayUsuarioDTO;
+import br.edu.unisep.carteiraweb.dto.UsuarioResponse;
 import br.edu.unisep.carteiraweb.exception.ResourceNotFoundException;
 import br.edu.unisep.carteiraweb.helpers.GetUserByToken;
 import br.edu.unisep.carteiraweb.model.Carteira;
 import br.edu.unisep.carteiraweb.model.Usuario;
 import br.edu.unisep.carteiraweb.repository.CarteiraRepository;
 import br.edu.unisep.carteiraweb.repository.UsuarioRepository;
+import br.edu.unisep.carteiraweb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,19 +35,19 @@ public class UsuarioController {
     private GetUserByToken getUserByToken;
 
     @Autowired
-    private UsuarioDTOBuilder dtoBuilder;
+    private UsuarioService usuarioService;
 
     @GetMapping("/usuarios")
-    public List<DisplayUsuarioDTO> getAllUsers() {
-        return dtoBuilder.build(usuarioRepository.findAll());
+    public List<UsuarioResponse> getAllUsers() {
+        return usuarioService.build(usuarioRepository.findAll());
     }
 
     @GetMapping("/usuarios/{id}")
-    public ResponseEntity<DisplayUsuarioDTO> getUserById(@PathVariable(value = "id") Long usuarioId)
+    public ResponseEntity<UsuarioResponse> getUserById(@PathVariable(value = "id") Long usuarioId)
             throws ResourceNotFoundException {
         Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() ->
                 new ResourceNotFoundException("User not found for this id :: " + usuarioId));
-        DisplayUsuarioDTO displayDTO = dtoBuilder.build(usuario);
+        UsuarioResponse displayDTO = usuarioService.build(usuario);
         return ResponseEntity.ok().body(displayDTO);
     }
 

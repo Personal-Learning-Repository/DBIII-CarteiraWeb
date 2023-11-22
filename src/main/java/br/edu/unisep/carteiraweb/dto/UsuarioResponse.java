@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class DisplayUsuarioDTO {
+public class UsuarioResponse {
 
     private String cpf;
     private String nome;

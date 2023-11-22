@@ -97,6 +97,7 @@
 	</dependencies>
 
 	<build>
+		<!-- TODO Variabilizar -->
 		<finalName>carteiraweb</finalName>
 		<plugins>
 			<plugin>
