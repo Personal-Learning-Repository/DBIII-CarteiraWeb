@@ -1,0 +1,33 @@
+version: '1'
+
+services:
+  api:
+    image: gmod9k/carteira-web:latest
+    container_name: carteiraweb-tomcat
+    env_file:
+      - .env/compose_secrets.txt
+    networks:
+      - carteiraweb-network
+    tty: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: carteiraweb-db
+    env_file:
+      - .env/compose_secrets.txt    
+    restart: always
+    tty: true
+    networks:
+      - carteiraweb-network
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+networks:
+  carteiraweb-network:
+    driver: bridge
+  
