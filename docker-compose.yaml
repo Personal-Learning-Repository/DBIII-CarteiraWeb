@@ -5,7 +5,7 @@ services:
     image: gmod9k/carteira-web:latest
     container_name: carteiraweb-tomcat
     env_file:
-      - .env/compose_secrets.txt
+      - .env/compose-springsecrets.yaml
     networks:
       - carteiraweb-network
     tty: true
@@ -19,7 +19,7 @@ services:
     command: --innodb-use-native-aio=0
     container_name: carteiraweb-db
     env_file:
-      - .env/compose_secrets.txt    
+      - .env/compose-dbsecrets.yaml
     restart: always
     tty: true
     networks:
