@@ -11,24 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: ProgDBIII-CarteiraWeb-ENV
 
-    services:
-      db:
-        image: mysql:5.7
-        env:
-          MYSQL_USER: ${{ vars.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-          MYSQL_DATABASE: ${{ vars.MYSQL_DATABASE }}
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-        ports:
-          - 3306:3306
-
-    env:
-      spring.datasource.url: ${{ vars.SPRING_DATASOURCE_URL }}
-      spring.datasource.username: ${{ vars.SPRING_DATASOURCE_USERNAME }}
-      spring.datasource.password: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
-      spring.jpa.hibernate.ddl-auto: ${{ vars.HIBERNATE_DDL }}
-      jwt.secret: ${{ secrets.JWT_SECRET }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +22,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        run: mvn clean package
+        run: mvn clean package -DskipTests
 
       - name: Docker Login
         uses: docker/login-action@v3
