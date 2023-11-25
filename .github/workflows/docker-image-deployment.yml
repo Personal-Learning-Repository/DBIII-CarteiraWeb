@@ -46,16 +46,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: "."
-          target: "/home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb"
-
-      - name: Build on SSH
-        uses: appleboy/scp-action@master
-        with:
-          debug: true
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
+          target: "~/DBIII-CarteiraWeb"
           script: |
-            cd /home/runner/work/DBIII-CarteiraWeb/DBIII-CarteiraWeb
-            mvn clean package         
+            cd ~/DBIII-CarteiraWeb
+            mvn clean package   
